@@ -1,3 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body {
     font-family: "Comic Sans MS", sans-serif;
+    background-color: white;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 0 0, pink, transparent), radial-gradient(circle at 100% 100%, lightblue, transparent);
+    /* background-image: url('assets/bg.gif'); */
+    /* background-size: repeat; */
+}
+
+/* ABOUT */
+.about {
+    display: none;
+}
+
+
+/* 3D MUG */
+.mug-container {
+    position: fixed;
+    z-index: 100;
+    right: 20px;
+    bottom: 0;
+}
+model-viewer {
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+}
+
+
+/* ARCHIVE GRID */
+.archive-grid-container {
+    width: 100%;
+    display: grid;
+    margin: 5px;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.grid-item {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed black;
+    overflow: hidden;
+
+    /* effect */
+    /* filter: grayscale(1); */
+    /* mix-blend-mode: multiply; */
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
 }

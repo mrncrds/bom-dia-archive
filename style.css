@@ -1,3 +1,9 @@
+:root {
+    --img-size: 110px;
+    --space: 10px;
+    --bg-color: pink;
+    --cursive: cursive, serif;
+}
 * {
     padding: 0;
     margin: 0;
@@ -5,15 +11,40 @@
 
 body {
     font-family: "Comic Sans MS", sans-serif;
-    background-color: white;
+    font-size: 14px;
     overflow-x: hidden;
-    background-image: radial-gradient(circle at 0 0, pink, transparent), radial-gradient(circle at 100% 100%, lightblue, transparent);
-    /* background-image: url('assets/bg.gif'); */
-    /* background-size: repeat; */
+    /* background-color: black; */
+    /* background-image: radial-gradient(circle at 0 0, pink, transparent), radial-gradient(circle at 100% 100%, lightblue, transparent); */
+    background-image: url('assets/bg.gif');
+    background-size: repeat;
+}
+a {
+    text-decoration: none;
+    color: black;
+    /* border-bottom: dashed 1px black; */
+}
+a:hover {
+    color: blue;
+}
+h1 {
+    font-size: 20px;
+}
+.cursive {
+    font-family: var(--cursive);
 }
 
 /* ABOUT */
-.about {
+header, .footer {
+    position: fixed;
+    background-color: var(--bg-color);
+}
+header {
+    z-index: 100;
+    width: 10%;
+    top: var(--space);
+    left: var(--space);
+}
+.about, .mug-container {
     display: none;
 }
 
@@ -34,23 +65,124 @@ model-viewer {
 
 /* ARCHIVE GRID */
 .archive-grid-container {
-    width: 100%;
+    /* width: 100%; */
     display: grid;
-    margin: 5px;
-    gap: 5px;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--img-size), 1fr));
+    gap: 1rem;
+    margin: var(--space);
 }
 .grid-item {
-    width: 100px;
-    height: 100px;
-    border: 1px dashed black;
+    cursor: pointer;
+    width: var(--img-size);
+    height: var(--img-size);
     overflow: hidden;
+    background-color: black;
+
+    /* border */
+    /* border: 5px solid green; */
+    /* border-image-source: linear-gradient(lightgreen, darkgreen); */
+    border: 1px dashed white;
 
     /* effect */
+    /* -webkit-filter: contrast(10) grayscale(1) invert(1); */
+    /* -webkit-filter: brightness(2) grayscale(1) hue-rotate(150deg); */
     /* filter: grayscale(1); */
-    /* mix-blend-mode: multiply; */
+    transition: filter 0.5s ease-in-out;
+}
+.grid-item:hover {
+    /* filter: blur(5px); */
+    filter: drop-shadow(0 0 10px pink);
 }
 .grid-item img {
     width: 100%;
     height: auto;
+}
+
+
+/* FOOTER */
+.footer {
+    bottom: var(--space);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    min-width: 300px;
+}
+
+
+/* MODAL */
+#modal {
+    display: none; 
+    position: fixed; 
+    z-index: 990;
+    /* padding-top: 100px; */
+    left: 0;
+    top: 0;
+    width: 100vw; 
+    height: 100vh; 
+    overflow: hidden; 
+    /* backdrop-filter: blur(3px) grayscale(1) brightness(1.2); */
+}
+#modalCard {
+    /* rotate: -2deg; make random rotation */
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px dashed black;
+    display: flex;
+}
+/* Modal Content (Image) */
+#modalContent {
+    z-index: 999;
+    margin: auto;
+    display: block;
+    width: 50%;
+    max-width: 500px;
+}
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#modalCaption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    /* color: white; */
+    padding: 10px 0;
+    height: 150px;
+}
+/* Add Animation - Zoom in the Modal */
+#modalContent, #modalCaption {
+    /* animation-name: zoom; */
+    animation-duration: 1s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+#modalClose {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: black;
+    font-size: 40px;
+    transition: 0.3s;
+}
+#modalClose:hover,
+#modalClose:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  #modalContent {
+    width: 100%;
+  }
 }

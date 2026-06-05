@@ -6,18 +6,21 @@
     <title>Bom dia, alegria!</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.0/model-viewer.min.js"></script>
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1><marquee>Bom dia, alegria! <em>Morning, sunshine!</em></marquee></h1>
+        <h1><marquee>Bom dia, alegria! <em>Morning, sunshine!</em> 👍☕️🌻</marquee></h1>
         <div class="mug-container">
             <model-viewer alt="Cat mug" src="assets/marina-mug.glb" shadow-intensity="0" camera-controls touch-action="pan-y"></model-viewer>
         </div>
     </header>
+
     <!-- Archive Grid -->
     <div class="archive-grid-container">
     </div>
+
     <!-- About -->
     <div class="about">
         <details>
@@ -48,6 +51,25 @@
         </details>
 
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <!-- <img src="assets/bordado.png" alt="Embroidery" width="500"> -->
+        <p>🌸 Created by <a href="https://marinacardoso.net" target="_blank" class="cursive">Marina</a> for the SFPC "Digital Decay & Afterlives" class, Spring 2026. 🌸</p>
+    </div>
+
+    <!-- Image Modal Container -->
+    <div id="modal">
+        <div id="modalCard">
+            <!-- Close Button -->
+            <span id="modalClose">&times;</span>
+            <!-- Modal Content (The Image) -->
+            <img id="modalContent">
+            <!-- Modal Caption (Image Text) -->
+            <div id="modalCaption"></div>
+        </div>
+    </div>
+
     <script src="script.js" defer></script>
 </body>
 </html>

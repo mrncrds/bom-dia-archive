@@ -3,6 +3,7 @@
     --space: 10px;
     --bg-color: pink;
     --cursive: cursive, serif;
+    --comic-sans: "Comic Sans MS", sans-serif;
 }
 * {
     padding: 0;
@@ -10,7 +11,7 @@
 }
 
 body {
-    font-family: "Comic Sans MS", sans-serif;
+    font-family: var(--comic-sans);
     font-size: 14px;
     overflow-x: hidden;
     /* background-color: black; */
@@ -79,8 +80,6 @@ model-viewer {
     background-color: black;
 
     /* border */
-    /* border: 5px solid green; */
-    /* border-image-source: linear-gradient(lightgreen, darkgreen); */
     border: 1px dashed white;
 
     /* effect */
@@ -114,49 +113,55 @@ model-viewer {
     display: none; 
     position: fixed; 
     z-index: 990;
-    /* padding-top: 100px; */
     left: 0;
     top: 0;
     width: 100vw; 
     height: 100vh; 
     overflow: hidden; 
+    backdrop-filter: blur(3px);
     /* backdrop-filter: blur(3px) grayscale(1) brightness(1.2); */
 }
 #modalCard {
     /* rotate: -2deg; make random rotation */
-    width: 50%;
     margin: auto;
+    padding: var(--space);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    gap: var(--space);
     background-color: white;
     border: 1px dashed black;
-    display: flex;
+    box-shadow: 0 0 30px white;
 }
 /* Modal Content (Image) */
 #modalContent {
-    z-index: 999;
-    margin: auto;
-    display: block;
+    flex-basis: 70%;
+    z-index: 998;
     width: 50%;
     max-width: 500px;
 }
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
 #modalCaption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    /* color: white; */
-    padding: 10px 0;
-    height: 150px;
+    font-size: 16px;
+    align-self: flex-end;
+}
+#modalCaption p {
+    /* background-color: var(--bg-color); */
+}
+#modalCaption p:not(:last-child) {
+    padding-bottom: 2px;
+    border-bottom: 1px dashed black;
+}
+.metadata {
+    font-weight: bold;
+    font-family: var(--comic-sans);
 }
 /* Add Animation - Zoom in the Modal */
-#modalContent, #modalCaption {
+#modal {
     /* animation-name: zoom; */
-    animation-duration: 1s;
+    animation-duration: 0.5s;
 }
 
 @keyframes zoom {
@@ -167,22 +172,31 @@ model-viewer {
 /* The Close Button */
 #modalClose {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    margin: 0 20px;
     color: black;
     font-size: 40px;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 #modalClose:hover,
 #modalClose:focus {
-    color: #bbb;
+    color: #a4a4a4;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+/* Smaller Screens */
+@media only screen and (max-width: 700px) {
   #modalContent {
     width: 100%;
+  }
+  #modalCaption {
+    align-self: auto;
+  }
+  #modalCard {
+    width: 80%;
+    flex-direction: column;
   }
 }

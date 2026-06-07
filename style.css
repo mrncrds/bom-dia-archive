@@ -1,13 +1,18 @@
 :root {
     --img-size: 110px;
     --space: 10px;
+    --space-fade: 20px;
     --bg-color: pink;
+    --bg-yellow: #fdffce;
     --cursive: cursive, serif;
     --comic-sans: "Comic Sans MS", sans-serif;
 }
 * {
     padding: 0;
     margin: 0;
+}
+html {
+    scrollbar-color: var(--bg-color) var(--bg-yellow);
 }
 
 body {
@@ -38,21 +43,17 @@ h1 {
 header, .footer {
     position: fixed;
     background-color: var(--bg-color);
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+    /* text-align: center; */
+    box-shadow: 0 0 20px 20px var(--bg-color);
+    border-radius: 20px;
+    /* left: 50%;
+    transform: translateX(-50%); */
 }
 header {
     z-index: 100;
-    height: 25x;
-    width: 200px;
-    /* rotate: -35deg;
-    left: -30px;
-    top: 20px; */
-    /* top: var(--space); */
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
-    /* left: var(--space); */
+    max-width: 500px;
+    top: var(--space-fade);
+    left: var(--space-fade);
 }
 .about, .mug-container {
     display: none;
@@ -94,26 +95,25 @@ model-viewer {
     /* -webkit-filter: contrast(10) grayscale(1) invert(1); */
     /* -webkit-filter: brightness(2) grayscale(1) hue-rotate(150deg); */
     /* filter: grayscale(1); */
-    transition: filter 0.5s ease-in-out;
+    /* transition: filter 0.5s ease-in-out; */
+    transition: scale 0.2s ease;
 }
 .grid-item:hover {
-    /* filter: blur(5px); */
-    /* filter: drop-shadow(0 0 10px pink); */
-    /* rotate: 5deg; */
+    scale: 1.05;
 }
 .grid-item img {
     width: 100%;
     height: auto;
-    transition: all 2s ease-in-out;
+    transition: opacity 2s ease-in-out;
 }
 
 
 /* FOOTER */
 .footer {
-    bottom: var(--space);
-    left: 50%;
-    transform: translateX(-50%);
-    /* text-align: center; */
+    bottom: var(--space-fade);
+    /* left: 50%;
+    transform: translateX(-50%); */
+    right: var(--space-fade);
     min-width: 300px;
 }
 

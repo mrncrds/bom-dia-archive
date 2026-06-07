@@ -32,9 +32,26 @@ onload = function() {
                 grid.appendChild(gridItem);
             });
 
-            // Click to open image in modal
+            // Hover effect for grid items
             const gridItems = document.querySelectorAll(".grid-item");
             gridItems.forEach(image => {
+                // Show filename as tooltip
+                // image.onmouseover = function() {
+                //     const hoveredImg = image.querySelector("img");
+                //     const hoveredTitle = hoveredImg.src.split("/").pop();
+                //     const tooltip = document.createElement("div");
+                //     tooltip.classList.add("tooltip");
+                //     tooltip.innerText = hoveredTitle;
+                //     image.appendChild(tooltip);
+                //     hoveredImg.style.filter = "blur(2px)";
+                //     console.log("Hovered image:", hoveredImg);
+                // };
+                // image.onmouseout = function() {
+                //     const hoveredImg = image.querySelector("img");
+                //     hoveredImg.style.filter = "none";
+                // };
+
+                // Click to open image in modal
                 image.onclick = function() {
                     const clickedImg = image.querySelector("img");
                     modal.style.display = "block";
@@ -76,7 +93,7 @@ onload = function() {
 
     function changeOpacity(image) {
         console.log("Clicked image:", image);
-        image.style.opacity = "0.2"; 
+        image.style.opacity = "0.3"; 
         image.style.filter = "grayscale(1) blur(2px)"; 
         image.parentElement.style.backgroundColor = "unset";
         image.parentElement.style.border = "unset";

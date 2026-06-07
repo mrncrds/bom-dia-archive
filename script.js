@@ -40,7 +40,10 @@ onload = function() {
                     modal.style.display = "block";
                     modalImg.src = clickedImg.src;
                     modalImg.alt = clickedImg.alt;
-                    
+
+                    // Change style of clicked image in grid
+                    changeOpacity(clickedImg);
+
                     // Caption text: Get metadata from JSON based on clicked image filename
                     const imgData = images.find(img => img.filename === clickedImg.src.split("/").pop());
                     if (imgData) {
@@ -49,16 +52,16 @@ onload = function() {
                         imgWidth.innerHTML = "Width: <span class='metadata'>" + imgData.width + "px</span>";
                         imgHeight.innerHTML = "Height: <span class='metadata'>" + imgData.height + "px</span>";
                         imgSize.innerHTML = "Size: <span class='metadata'>" + imgData.file_size_bytes + " KB</span>";
-                        imgSource.innerHTML = "Source: <span class='metadata'>?</span>";
-                        imgSubject.innerHTML = "Subject: <span class='metadata'>" + imgData.subject + "</span>";
+                        imgSource.innerHTML = "Source: <span class='metadata blurry'>???</span>";
+                        imgSubject.innerHTML = "Category: <span class='metadata blurry'>" + imgData.subject + "</span>";
                     } else {
-                        imgFilename.innerHTML = "Filename: <span class='metadata'>?</span>";
-                        imgYear.innerHTML = "Year: <span class='metadata'>?</span>";
-                        imgWidth.innerHTML = "Width: <span class='metadata'>?</span>";
-                        imgHeight.innerHTML = "Height: <span class='metadata'>?</span>";
-                        imgSize.innerHTML = "Size: <span class='metadata'>?</span>";
-                        imgSource.innerHTML = "Source: <span class='metadata'>?</span>";
-                        imgSubject.innerHTML = "Subject: <span class='metadata'>?</span>";
+                        imgFilename.innerHTML = "Filename: <span class='metadata blurry'>???</span>";
+                        imgYear.innerHTML = "Year: <span class='metadata blurry'>???</span>";
+                        imgWidth.innerHTML = "Width: <span class='metadata blurry'>???</span>";
+                        imgHeight.innerHTML = "Height: <span class='metadata blurry'>???</span>";
+                        imgSize.innerHTML = "Size: <span class='metadata blurry'>???</span>";
+                        imgSource.innerHTML = "Source: <span class='metadata blurry'>???</span>";
+                        imgSubject.innerHTML = "Category: <span class='metadata blurry'>???</span>";
                     }
                 };
             });
@@ -70,4 +73,12 @@ onload = function() {
     close.onclick = function() {
         modal.style.display = "none";
     };
+
+    function changeOpacity(image) {
+        console.log("Clicked image:", image);
+        image.style.opacity = "0.2"; 
+        image.style.filter = "grayscale(1) blur(2px)"; 
+        image.parentElement.style.backgroundColor = "unset";
+        image.parentElement.style.border = "unset";
+    }
 };
